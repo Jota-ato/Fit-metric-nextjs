@@ -98,3 +98,7 @@ body {
     color: var(--text-main);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.container {
+    @apply w-[85%] max-w-480 py-20 mx-auto;
+}

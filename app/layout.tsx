@@ -1,22 +1,25 @@
 import type { Metadata } from "next";
-import { openSans } from "./fonts";
-import Header from "@/src/components/Hero";
-import "@/app/globals.css"
+import "./globals.css";
+import { ThemeScript } from "./themeScripts";
+import Navegation from "@/src/components/layout/Navegation";
 
 export const metadata: Metadata = {
     title: "Fit Metric",
-    description: "Fit Metric",
+    description: "Track your fitness journey",
 };
 
 export default function RootLayout({
     children,
-}: Readonly<{
+}: {
     children: React.ReactNode;
-}>) {
+}) {
     return (
-        <html lang="en">
-            <body className={openSans.className}>
-                <Header />
+        <html lang="es" suppressHydrationWarning>
+            <head>
+                <ThemeScript />
+            </head>
+            <body className="transition-colors duration-300 text-text-main">
+                <Navegation />
                 {children}
             </body>
         </html>
