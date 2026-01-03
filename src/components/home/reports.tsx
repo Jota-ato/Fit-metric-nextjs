@@ -116,7 +116,10 @@ export default function Reports() {
                                         border: '1px solid #e5e7eb',
                                         borderRadius: '8px'
                                     }}
-                                    formatter={(value?: number) => [value || 0, 'kg Peso'] as const}
+                                    formatter={(value?: number) => {
+                                        if (value === undefined) return ['--', 'Peso'];
+                                        return [`${value} kg`, 'Peso'];
+                                    }}
                                 />
                                 <Bar
                                     dataKey="weight"
