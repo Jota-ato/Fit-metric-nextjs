@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeScript } from "./themeScripts";
 import Navegation from "@/src/components/layout/Navegation";
+import Footer from "@/src/components/layout/Footer";
 
 export const metadata: Metadata = {
     title: "Fit Metric",
@@ -21,6 +22,7 @@ export default function RootLayout({
             <body className="transition-colors duration-300 text-text-main">
                 <Navegation />
                 {children}
+                <Footer />
             </body>
         </html>
     );
