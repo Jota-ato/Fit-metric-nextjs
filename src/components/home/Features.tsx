@@ -20,7 +20,7 @@ function FeatureCard({
     return (
         <article
             ref={elementRef}
-            className={`bg-surface p-8 rounded-xl shadow-lg transition-all shadow-custom duration-700 ${isVisible
+            className={`bg-surface p-8 rounded-xl transition-all shadow-custom duration-700 ${isVisible
                 ? `animate-jump ${delay}`
                 : 'opacity-0'
                 }`}
@@ -36,8 +36,8 @@ export default function Features() {
     return (
         <section className="w-full">
             <div className="container space-y-8">
-                <h2 className="text-center text-6xl font-bold text-white">Características</h2>
-                <div className="grid lg:grid-cols-3 gap-6">
+                <h2 className="text-center text-6xl font-bold text-success">Características</h2>
+                <div className="grid lg:grid-cols-3 gap-8">
                     <FeatureCard
                         icon={NotebookPen}
                         title="Controlar tu dieta"

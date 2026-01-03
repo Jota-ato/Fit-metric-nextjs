@@ -50,7 +50,7 @@ export default function Navegation() {
                             }`}
                         style={{ position: "absolute", right: 0, top: 80 }}
                     >
-                        <nav className="bg-surface rounded-lg border-2 border-gray-100 dark:border-gray-800 shadow-lg p-6 text-text-main">
+                        <nav className="bg-surface rounded-lg border border-border-muted shadow-custom p-6 text-text-main">
                             <div className="flex flex-col gap-6 font-bold text-2xl">
                                 {navLinks.map(({ path, label }) => (
                                     <Link
