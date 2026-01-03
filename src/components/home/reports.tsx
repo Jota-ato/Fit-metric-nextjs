@@ -85,7 +85,10 @@ export default function Reports() {
                                     cx="50%"
                                     cy="50%"
                                     labelLine={false}
-                                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                                    label={({ name, percent }) => {
+                                        if (!percent) return;
+                                        return `${name} ${(percent * 100).toFixed(0)}%`
+                                    }}
                                     outerRadius={100}
                                     fill="#8884d8"
                                     dataKey="value"
@@ -113,7 +116,7 @@ export default function Reports() {
                                         border: '1px solid #e5e7eb',
                                         borderRadius: '8px'
                                     }}
-                                    formatter={(value: number) => [`${value} kg`, 'Peso']}
+                                    formatter={(value?: number) => [value || 0, 'kg Peso'] as const}
                                 />
                                 <Bar
                                     dataKey="weight"
