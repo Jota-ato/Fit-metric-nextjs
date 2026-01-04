@@ -39,13 +39,13 @@ export default function SideBar() {
                             <Link
                                 key={path}
                                 href={path}
-                                className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ${isActive(path)
+                                className={`flex items-center gap-3 p-3 text-xl rounded-xl transition-all duration-300 ${isActive(path)
                                     ? "bg-primary text-white"
                                     : "hover:bg-background/80"
                                     }`}
                             >
                                 <Icon size={20} />
-                                <span className="font-medium">{label}</span>
+                                <span className="font-bold">{label}</span>
                             </Link>
                         ))}
                     </nav>
