@@ -3,6 +3,9 @@ import { useForm, type SubmitHandler } from "react-hook-form"
 import { usePatientStore } from "../../../stores/PatientStore"
 import type { GoalType, PurposeType, ActivityFactorType } from "../../../types"
 import FormContainer from "./FormContainer"
+import { useRouter } from "next/navigation"
+import { usePageStore } from "../../../stores/PageStore"
+import { usePathname } from "next/navigation"
 
 type DetailInformationInputsType = {
     goal: GoalType
@@ -13,6 +16,8 @@ type DetailInformationInputsType = {
 export default function DetailInformationForm() {
     const setPatientData = usePatientStore(state => state.setPatientData)
     const { advancedInfo: { goal, purpose, activityFactor } } = usePatientStore()
+    const router = useRouter()
+    const pathname = usePathname()
 
     // 1. Añadimos defaultValues para que el select no inicie en un estado inválido "selected"
     const { register, handleSubmit, formState: { errors } } = useForm<DetailInformationInputsType>({
@@ -25,6 +30,8 @@ export default function DetailInformationForm() {
 
     const onSubmit: SubmitHandler<DetailInformationInputsType> = (data) => {
         setPatientData({ advancedInfo: data })
+        router.push('/app/me')
+        usePageStore.setState({ formStep: 1 })
     }
 
     return (
@@ -87,7 +94,7 @@ export default function DetailInformationForm() {
                     </div>
 
                     <button type="submit" className="bg-primary text-main font-bold text-2xl p-4 w-full rounded-lg cursor-pointer hover:opacity-90 transition-opacity">
-                        Finalizar formulario
+                        {pathname === "/app/registration" ? "Finalizar registro" : "Editar información"}
                     </button>
                 </fieldset>
             </form>

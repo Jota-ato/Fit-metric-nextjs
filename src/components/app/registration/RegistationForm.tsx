@@ -6,6 +6,7 @@ import InputContainter from "./InputContainter"
 import FormContainer from "./FormContainer"
 import { usePatientStore } from "../../../stores/PatientStore"
 import { usePageStore } from "@/src/stores/PageStore"
+import { usePathname } from "next/navigation"
 
 export default function RegistationForm() {
 
@@ -20,6 +21,7 @@ export default function RegistationForm() {
     })
     const setPatientData = usePatientStore(state => state.setPatientData)
     const setIsFullBasicInfo = usePageStore(state => state.setIsFullBasicInfo)
+    const pathname = usePathname()
 
     const onSubmit: SubmitHandler<PatientBasicInfo> = (data) => {
         setPatientData({ basicInfo: data })
@@ -93,7 +95,7 @@ export default function RegistationForm() {
                     </div>
 
                     <button type="submit" className="bg-primary text-main font-bold text-2xl p-4 w-full rounded-lg cursor-pointer hover:opacity-90 transition-opacity">
-                        Continuar
+                        {pathname === "/app/registration" ? "Continuar" : "Editar información"}
                     </button>
                 </fieldset>
             </form>
