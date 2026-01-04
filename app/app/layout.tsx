@@ -13,7 +13,7 @@ export default function AppLayout({
 }) {
     return (
         <>
-            <div className="md:flex min-h-screen bg-background">
+            <div className="lg:flex min-h-screen bg-background">
                 <SideBar />
                 <main className="flex justify-center items-center" style={{ flexGrow: 1 }}>
                     {children}
