@@ -21,7 +21,9 @@ export default function RootLayout({
             </head>
             <body className="transition-colors duration-300 text-text-main">
                 <Navegation />
-                {children}
+                <main className="min-h-screen">
+                    {children}
+                </main>
                 <Footer />
             </body>
         </html>
