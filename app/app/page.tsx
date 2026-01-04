@@ -1,5 +1,5 @@
-export default function App() {
+export default function Dashboard() {
     return (
-        <div>App</div>
+        <div>Dashboard</div>
     )
 }

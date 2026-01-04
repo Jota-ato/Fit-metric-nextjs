@@ -28,7 +28,7 @@ export default function SideBar() {
     // Desktop Sidebar (Vertical - 200px width)
     if (isDesktop) {
         return (
-            <aside className="fixed left-0 top-0 h-screen w-[200px] bg-surface border-r border-border-muted flex flex-col">
+            <aside style={{ flexBasis: "20rem" }} className="h-screen bg-surface border-r border-border-muted flex flex-col">
                 <div className="p-8">
                     <h1 className="font-bold text-4xl text-primary mb-16">
                         <Link href="/">Fit Metric</Link>

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Navegation from "@/src/components/layout/Navegation";
-import Footer from "@/src/components/layout/Footer";
+import Navegation from "@/src/components/ui/Navegation";
+import Footer from "@/src/components/ui/Footer";
 
 export const metadata: Metadata = {
     title: "App - Fit Metric",

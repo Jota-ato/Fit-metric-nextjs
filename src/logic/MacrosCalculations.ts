@@ -1,0 +1,51 @@
+import type { MacronutrientType, PurposeType } from "../types"
+
+export const macrosValues: Record<MacronutrientType, number> = {
+    "Protein": 4,
+    "Carbohydrate": 4,
+    "Fat": 9
+}
+
+// 50% carbs, 30% fat, 20% protein for bulking
+// 40% carbs, 40% fat, 20% protein for maintaining
+// 30% carbs, 40% fat, 30% protein for cutting
+
+export const macrosRatios: Record<PurposeType, Record<MacronutrientType, number>> = {
+    "Gain Muscle": {
+        "Protein": 0.2,
+        "Carbohydrate": 0.5,
+        "Fat": 0.3
+    },
+    "Maintain Muscle": {
+        "Protein": 0.2,
+        "Carbohydrate": 0.4,
+        "Fat": 0.4
+    },
+    "Lose Fat": {
+        "Protein": 0.3,
+        "Carbohydrate": 0.3,
+        "Fat": 0.4
+    }
+}
+
+export type MacronutrientBreakdown = {
+    protein: number;
+    carbohydrate: number;
+    fat: number;
+}
+
+export function calculateMacrosInGrams(calories: number, purpouse: PurposeType): MacronutrientBreakdown {
+    /**
+     * Calculate the needed macros in grams based on the calories and the purpouse
+     * Props:
+     * @param calories - calories needed per day
+     * @param purpouse - purpouse type (Bulk, Maintain, Cut)
+     * Returns:
+     * @returns Object with the macros in grams
+     */
+    return {
+        protein: Math.round(macrosRatios[purpouse]["Protein"] * calories / macrosValues["Protein"]),
+        carbohydrate: Math.round(macrosRatios[purpouse]["Carbohydrate"] * calories / macrosValues["Carbohydrate"]),
+        fat: Math.round(macrosRatios[purpouse]["Fat"] * calories / macrosValues["Fat"]),
+    }
+}
