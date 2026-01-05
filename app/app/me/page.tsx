@@ -6,27 +6,40 @@ import { useEffect } from "react"
 export default function MePage() {
     const router = useRouter()
     const isBasicInfoFull = usePageStore(state => state.isBasicInfoFull)
+    const hasHydrated = usePageStore(state => state._hasHydrated)
+
     useEffect(() => {
-        if (!isBasicInfoFull) {
+        if (hasHydrated && !isBasicInfoFull) {
             router.push('/app/registration')
         }
-    }, [isBasicInfoFull, router])
+    }, [hasHydrated, isBasicInfoFull, router])
 
-    // Mostrar loading mientras redirige
+    if (!hasHydrated) {
+        return (
+            <section className="flex items-center justify-center min-h-screen">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full size-16 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-muted mt-4">Cargando...</p>
+                </div>
+            </section>
+        )
+    }
+
     if (!isBasicInfoFull) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
+            <section className="flex items-center justify-center min-h-screen">
                 <div className="text-center">
                     <div className="animate-spin rounded-full size-16 border-b-2 border-info mx-auto mb-4"></div>
-                    <p className="text-muted">Redirigiendo...</p>
+                    <p className="text-muted mt-4">Redirigiendo...</p>
                 </div>
-            </div>
+            </section>
         )
     }
 
     return (
-        <>
-            <p>Me page</p>
-        </>
+        <section className="space-y-6">
+            <h1 className="text-4xl font-bold">Mi Perfil</h1>
+            <p>Contenido de la página...</p>
+        </section>
     )
 }
