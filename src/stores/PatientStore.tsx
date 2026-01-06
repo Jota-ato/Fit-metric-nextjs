@@ -86,12 +86,10 @@ export const usePatientStore = create<PatientState>()(
                         )
                     }
 
-                    // 3. CÁLCULO DE TDEE (Requiere BMR ya calculado + Factor de Actividad)
                     if (newBMR > 0 && newAdvancedInfo.activityFactor) {
                         newTDEE = calculateTDEE(newBMR, newAdvancedInfo.activityFactor)
                     }
 
-                    // 4. CÁLCULO FINAL (Requiere TDEE + Objetivo y Propósito)
                     if (newTDEE > 0 && newAdvancedInfo.goal && newAdvancedInfo.purpose) {
                         newCaloriesNeeded = calculateCaloriesNeeded(newTDEE, newAdvancedInfo.goal)
                         newMacros = calculateMacrosInGrams(newCaloriesNeeded, newAdvancedInfo.purpose)
