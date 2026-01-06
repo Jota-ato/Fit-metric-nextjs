@@ -2,15 +2,14 @@
 import { useRouter } from "next/navigation"
 import { usePageStore } from "@/src/stores/PageStore"
 import { useEffect } from "react"
+import { FaUser, FaEdit } from "react-icons/fa"
 import { usePatientStore } from "@/src/stores/PatientStore"
-import { translateSex } from "@/src/utilities"
-import { FaFire, FaUser, FaWeight, FaVenusMars, FaBirthdayCake, FaRuler } from "react-icons/fa"
+import DataGrid from "@/src/components/app/Me/DataGrid"
 
 export default function MePage() {
     const router = useRouter()
     const isBasicInfoFull = usePageStore(state => state.isBasicInfoFull)
-    const { age, weight, height, name, sex } = usePatientStore(state => state.basicInfo)
-    const caloriesNeeded = usePatientStore(state => state.caloriesNeeded)
+    const { name } = usePatientStore(state => state.basicInfo)
     const hasHydrated = usePageStore(state => state._hasHydrated)
 
     useEffect(() => {
@@ -30,48 +29,22 @@ export default function MePage() {
         )
     }
 
-    const dataGridInfo = [
-        {
-            title: 'Peso',
-            value: `${weight}kg`,
-            icon: <FaWeight />
-        },
-        {
-            title: 'Altura',
-            value: `${height}cm`,
-            icon: <FaRuler />
-        },
-        {
-            title: 'Sexo',
-            value: translateSex(sex),
-            icon: <FaVenusMars />
-        },
-        {
-            title: 'Edad',
-            value: `${age} años`,
-            icon: <FaBirthdayCake />
-        }
-    ]
-
     return (
-        <section className="space-y-6 h-full container">
+        <section className="space-y-6 min-h-screen container">
             <h1 className="text-3xl md:text-5xl flex items-center gap-2 font-bold md:mb-16 mb-8"><FaUser />Mi Perfil <span className="text-info">({name})</span></h1>
-            <article className="w-full grid grid-cols-2 md:grid-cols-3 gap-8">
+            <DataGrid />
 
-                <div className="p-8 border border-border bg-surface rounded-xl col-span-2 space-y-6">
-                    <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2"><FaFire className="md:size-10 size-8 text-amber-500" />Calorias necesarias</h2>
-                    <p className="text-xl md:text-2xl font-bold text-muted">{Math.round(caloriesNeeded)} kcal</p>
+            <div className="md:mt-16 mt-8 p-8 border border-border rounded-xl shadow-custom flex flex-col md:flex-row gap-8 justify-between items-center">
+                <p className="md:text-2xl text-xl text-muted">Editar información</p>
+                <div className="flex items-center gap-6">
+                    <button className="flex text-md md:text-xl items-center gap-2 bg-info/80 hover:bg-info px-4 py-6 rounded-xl cursor-pointer transition-color duration-300 font-bold">
+                        <FaEdit /> Información básica
+                    </button>
+                    <button className="flex text-md md:text-xl items-center gap-2 bg-success/80 hover:bg-success px-4 py-6 rounded-xl cursor-pointer transition-color duration-300 font-bold">
+                        <FaEdit /> Información avanzada
+                    </button>
                 </div>
-                {dataGridInfo.map((info, index) => (
-                    <div key={index} className="p-8 border border-border bg-surface rounded-xl space-y-6">
-                        <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
-                            {info.icon}
-                            {info.title}
-                        </h2>
-                        <p className="text-xl md:text-2xl font-bold text-muted">{info.value}</p>
-                    </div>
-                ))}
-            </article>
+            </div>
         </section>
     )
 }
