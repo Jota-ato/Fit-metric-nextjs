@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { FaUser, FaEdit } from "react-icons/fa"
 import { usePatientStore } from "@/src/stores/PatientStore"
 import DataGrid from "@/src/components/app/Me/DataGrid"
+import Spinner from "@/src/components/ui/Spinner"
 
 export default function MePage() {
     const router = useRouter()
@@ -22,7 +23,7 @@ export default function MePage() {
         return (
             <section className="flex items-center justify-center min-h-screen">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full size-16 border-b-2 border-info mx-auto mb-4"></div>
+                    <Spinner />
                     <p className="text-muted mt-4">Cargando...</p>
                 </div>
             </section>

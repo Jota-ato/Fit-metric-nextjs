@@ -5,7 +5,7 @@ import { useMediaQuery } from "@/src/hooks/useMediaQuery";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useTheme } from "@/src/hooks/useTheme";
-import { Menu, X, Sun, Moon, LayoutDashboard, User, FileText, Home } from "lucide-react";
+import { Menu, X, Sun, Moon, LayoutDashboard, User, FileText, Home, NotebookPenIcon } from "lucide-react";
 
 export default function SideBar() {
     const { toggleTheme, theme } = useTheme();
@@ -21,6 +21,7 @@ export default function SideBar() {
         { path: "/", label: "Inicio", icon: Home },
         { path: "/app", label: "Dashboard", icon: LayoutDashboard },
         { path: "/app/me", label: "Perfil", icon: User },
+        { path: "/app/diary", label: "Diario", icon: NotebookPenIcon },
         { path: "/app/reports", label: "Informes", icon: FileText },
     ];
 
