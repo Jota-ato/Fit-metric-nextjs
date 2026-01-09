@@ -25,7 +25,6 @@ export default function SideBar() {
         { path: "/app/reports", label: "Informes", icon: FileText },
     ];
 
-
     // Desktop Sidebar (Vertical - 200px width)
     if (isDesktop) {
         return (

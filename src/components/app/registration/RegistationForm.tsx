@@ -6,17 +6,19 @@ import InputContainter from "./InputContainter"
 import FormContainer from "./FormContainer"
 import { usePatientStore } from "../../../stores/PatientStore"
 import { usePageStore } from "@/src/stores/PageStore"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 export default function RegistationForm() {
 
+    const { name, weight, height, age, sex } = usePatientStore(state => state.basicInfo)
+    const router = useRouter()
     const { register, handleSubmit, formState: { errors } } = useForm<PatientBasicInfo>({
         defaultValues: {
-            name: "",
-            weight: undefined,
-            height: undefined,
-            age: undefined,
-            sex: "" as GenderType
+            name: name || "",
+            weight: weight || undefined,
+            height: height || undefined,
+            age: age || undefined,
+            sex: sex || "" as GenderType
         }
     })
     const setPatientData = usePatientStore(state => state.setPatientData)
@@ -26,6 +28,9 @@ export default function RegistationForm() {
     const onSubmit: SubmitHandler<PatientBasicInfo> = (data) => {
         setPatientData({ basicInfo: data })
         setIsFullBasicInfo(data)
+        if (pathname !== '/app/registration') {
+            router.push('/app/me')
+        }
     }
 
     return (
