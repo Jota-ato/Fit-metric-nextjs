@@ -37,3 +37,5 @@ export type PatientAdvancedInfo = {
     goal: GoalType
     purpose: PurposeType
 }
+
+export type MealTime = 'breakfast' | 'lunch' | 'dinner' | 'snacks'

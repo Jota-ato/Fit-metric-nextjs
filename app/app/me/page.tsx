@@ -33,9 +33,9 @@ export default function MePage() {
 
     return (
         <section className="space-y-6 min-h-screen container">
-            <h1
+            <h2
                 className="text-3xl md:text-5xl flex items-center gap-2 font-bold md:mb-16 mb-8"
-            ><FaUser />Mi Perfil <span className="text-info">({name})</span></h1>
+            ><FaUser />Mi Perfil <span className="text-info">({name})</span></h2>
             <DataGrid />
             <EdithBar />
         </section>
