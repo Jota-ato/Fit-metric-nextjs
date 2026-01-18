@@ -55,7 +55,7 @@ export default function SearchBar({setFoods, setIsLoading, setIsQueryEmpty}: Sea
                     ><LuX/></label>
                     <input
                         style={{ flex: 1 }}
-                        className="text-xl border-2 border-border rounded-full py-2 px-4 focus:outline-0"
+                        className="text-xl md:text-2xl border-2 border-border rounded-full py-2 px-4 focus:outline-0"
                         type="text"
                         value={query}
                         onChange={handleChange}

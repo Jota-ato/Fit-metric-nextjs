@@ -12,7 +12,7 @@ export default function Search() {
     const [isQueryEmpty, setIsQueryEmpty] = useState(true)
 
     return (
-        <section className="container bg-surface p-8 rounded-xl border border-border">
+        <section className="container max-h-screen overflow-y-scroll p-8 rounded-xl">
             <SearchBar
                 setFoods={setFoods}
                 setIsLoading={setIsLoading}

@@ -3,7 +3,7 @@ import MealContainer from "./MealContainer";
 
 export default function Diary() {
     return (
-        <section className="container min-h-screen">
+        <section className="container max-h-screen overflow-y-scroll">
             <h2 className="text-4xl">
                 Registra tus comidas del día
             </h2>
