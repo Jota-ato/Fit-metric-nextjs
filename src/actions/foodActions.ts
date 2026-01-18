@@ -28,3 +28,34 @@ export async function searchFood(query: string): Promise<fatSecretSearchFoodResu
         return null
     }
 }
+
+export async function getFoodById(id: string) {
+    try {
+        const token = await getAccessToken()
+
+        const params = new URLSearchParams({
+            method: 'food.get.v5', 
+            food_id: id,
+            format: 'json'
+        })
+
+        const response = await fetch(`https://platform.fatsecret.com/rest/server.api?${params.toString()}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+            next: { revalidate: 86400 } 
+        })
+
+        if (!response.ok) {
+            throw new Error(`Error obteniendo detalles: ${response.statusText}`)
+        }
+
+        const data = await response.json()
+        return data
+
+    } catch (error) {
+        console.error("Error en getFoodById:", error)
+        return null
+    }
+}

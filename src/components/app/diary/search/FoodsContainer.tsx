@@ -1,17 +1,27 @@
+'use client'
 import { food } from "@/src/types/fatSecret"
 import { translateFoodDescription } from "@/src/utilities"
+import { useRouter } from "next/navigation"
 
 interface FoodsContainerProps {
     foods: food[]
 }
 
 export default function FoodsContainer({ foods }: FoodsContainerProps) {
+
+    const router = useRouter()
+
+    const searchFoodById = (id: string) => {
+        router.push(`${id}`)
+    }
+    
     return (
         <div className="mt-16 w-[80%] mx-auto space-y-8">
             {foods.map(f => (
                 <div
                     key={f.food_id}
                     className="bg-surface p-8 rounded-lg shadow-custom text-xl hover:scale-105 hover:border-info hover:text-info transition-all duration-300 border border-border cursor-pointer"
+                    onClick={() => searchFoodById(f.food_id)}
                 >
                     <div>
                         <h2 className="text-2xl">

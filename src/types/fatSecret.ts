@@ -15,3 +15,24 @@ export interface fatSecretSearchFoodResult {
         total_results: string;
     };
 }
+
+export interface fatSecretGetFoodResult {
+    food: {
+        food_id: string
+        food_name: string
+        food_type: string
+        servings: {
+            serving: []
+        }
+    }
+}
+
+export interface serving {
+    serving_id: string
+    serving_description: string
+    measurement_description: string
+    calories: string
+    carbohydrate: string
+    protein: string
+    fat: string
+}
