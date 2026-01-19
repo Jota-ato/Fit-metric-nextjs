@@ -1,10 +1,10 @@
 'use client'
-import { food } from "@/src/types/fatSecret"
+import { foodInSearchFoodResult } from "@/src/types/fatSecret"
 import { translateFoodDescription } from "@/src/utilities"
 import { useRouter } from "next/navigation"
 
 interface FoodsContainerProps {
-    foods: food[]
+    foods: foodInSearchFoodResult[]
 }
 
 export default function FoodsContainer({ foods }: FoodsContainerProps) {

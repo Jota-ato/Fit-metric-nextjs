@@ -1,17 +1,16 @@
 // src/actions/foodActions.ts (o en una API Route)
 'use server'
 import { getAccessToken } from '@/src/lib/auth'
-import { fatSecretSearchFoodResult } from '../types/fatSecret'
+import { fatSecretGetFoodResult, fatSecretSearchFoodResult } from '../types/fatSecret'
 
 export async function searchFood(query: string): Promise<fatSecretSearchFoodResult | null> {
     try {
         const token = await getAccessToken()
 
-        // Hacemos la petición a la API de Platform usando el token
         const response = await fetch(`https://platform.fatsecret.com/rest/server.api?method=foods.search&search_expression=${encodeURIComponent(query)}&format=json`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`, // Aquí usamos la "pulsera"
+                'Authorization': `Bearer ${token}`,
             },
             cache: 'no-store'
         })
@@ -29,7 +28,7 @@ export async function searchFood(query: string): Promise<fatSecretSearchFoodResu
     }
 }
 
-export async function getFoodById(id: string) {
+export async function getFoodById(id: string): Promise<fatSecretGetFoodResult | null> {
     try {
         const token = await getAccessToken()
 

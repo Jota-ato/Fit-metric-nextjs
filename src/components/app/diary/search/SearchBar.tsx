@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback, ChangeEvent, Dispatch, SetStateAction } from "react"
 import { searchFood } from "@/src/actions/foodActions"
 import useDebounce from "@/src/hooks/useDebounce"
-import { food } from "@/src/types/fatSecret"
+import { foodInSearchFoodResult } from "@/src/types/fatSecret"
 import { LuX } from "react-icons/lu"
 import { useRouter } from "next/navigation"
 
 interface SearchBarProps {
-    setFoods: Dispatch<SetStateAction<food[]>>
+    setFoods: Dispatch<SetStateAction<foodInSearchFoodResult[]>>
     setIsLoading: Dispatch<SetStateAction<boolean>>
     setIsQueryEmpty: Dispatch<SetStateAction<boolean>>
 }

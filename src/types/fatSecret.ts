@@ -1,4 +1,4 @@
-export interface food {
+export interface foodInSearchFoodResult {
     brand_name?: string,
     food_description: string,
     food_id: string,
@@ -9,7 +9,7 @@ export interface food {
 
 export interface fatSecretSearchFoodResult {
     foods: {
-        food: food[];
+        food: foodInSearchFoodResult[];
         max_results: string;
         page_number: string;
         total_results: string;
@@ -22,7 +22,7 @@ export interface fatSecretGetFoodResult {
         food_name: string
         food_type: string
         servings: {
-            serving: []
+            serving: serving[]
         }
     }
 }

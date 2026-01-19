@@ -2,12 +2,12 @@
 import FoodsContainer from "@/src/components/app/diary/search/FoodsContainer"
 import SearchBar from "@/src/components/app/diary/search/SearchBar"
 import Spinner from "@/src/components/ui/Spinner"
-import { food } from "@/src/types/fatSecret"
+import { foodInSearchFoodResult } from "@/src/types/fatSecret"
 import { useState } from "react"
 
 export default function Search() {
 
-    const [foods, setFoods] = useState<food[]>([])
+    const [foods, setFoods] = useState<foodInSearchFoodResult[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [isQueryEmpty, setIsQueryEmpty] = useState(true)
 

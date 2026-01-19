@@ -1,11 +1,11 @@
 'use client'
 import { searchFood } from "@/src/actions/foodActions"
-import { food } from "@/src/types/fatSecret"
+import { foodInSearchFoodResult } from "@/src/types/fatSecret"
 import { useState } from "react"
 
 export default function Page() {
     const [query, setQuery] = useState('')
-    const [result, setResult] = useState<food[]>([])
+    const [result, setResult] = useState<foodInSearchFoodResult[]>([])
     const [loading, setLoading] = useState(false)
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -15,7 +15,7 @@ export default function Page() {
         try {
             const momentaryResult = await searchFood(query)
             console.log(momentaryResult)
-            setResult(momentaryResult?.foods.food as food[])
+            setResult(momentaryResult?.foods.food as foodInSearchFoodResult[])
         } catch (error) {
             console.error('Error buscando comida:', error)
         } finally {
