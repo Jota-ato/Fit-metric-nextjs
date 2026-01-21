@@ -11,6 +11,10 @@ interface SearchBarProps {
     setIsQueryEmpty: Dispatch<SetStateAction<boolean>>
 }
 
+async function searchFood(name: string) {
+
+}
+
 export default function SearchBar({setFoods, setIsLoading, setIsQueryEmpty}: SearchBarProps) {
     const [query, setQuery] = useState("")
     const debouncedQuery = useDebounce(query, 1000)
