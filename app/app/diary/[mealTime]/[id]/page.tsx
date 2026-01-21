@@ -21,7 +21,7 @@ export default function FoodDetail() {
                 
                 // 3. Guardamos el DATO (no la promesa)
                 console.log("Datos recibidos:", data) // Para depurar
-                setActiveFood(data)
+                setActiveFood(data!)
             } catch (error) {
                 console.error("Error cargando alimento:", error)
             }
